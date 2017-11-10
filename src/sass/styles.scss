@@ -1,9 +1,7 @@
-/*
 $primary : #285278;
 $secondary : #E7E3BD;
 
-$main-width : 610px;
-$aside-width : 190px;
+$aside-width : 240px;
 
 html {
 	margin: 0;
@@ -30,10 +28,11 @@ div.title {
 	position: absolute;
 	right: 0;
 	bottom: 50px;
-	padding: 0px 60px 0px 60px;
+	padding: 0px 50px 0px 50px;
 
 	h1 {
 		color: #556C8C;
+		font-size: 36px;
 	}
 }
 
@@ -72,10 +71,11 @@ nav {
 	background-color: #7C7B81;
 	float: left;
 	width: 100%;
+	margin-top: -5px;
 }
 
 .bar-left {
-	width: $main-width;
+	width: 560px;
 	float: left;
 	padding-left: 50px;
 }
@@ -93,8 +93,36 @@ aside {
 	width: $aside-width;
 	float: left;
 	background-color: $secondary;
-	background-image: url("images/angebote_hg.jpg");
+	background-image: url(../images/angebote_hg.jpg);
 	padding: 10px;
+	background-position: bottom right;
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	min-height: 350px;
+	position: relative;
+	
+	.top {
+		padding-bottom: 75px;
+	}
+	
+	strong {
+		color: #000000;
+	}
+
+	.bottom {
+		float: right;
+		color: $secondary;
+		font-size: 12px;
+		font-weight: bold;
+		text-align: right;
+		position: absolute;
+		bottom: 5px;
+		right: 5px;
+
+		p {
+			margin: 0;
+		}
+	}
 }
 
 main {
@@ -118,8 +146,13 @@ article {
 
 .content {
 	float: left;
-	width: $main-width;
-	padding-left: 50px;
-	padding-top: 50px;
+	width: 510px;
+	padding: 50px;
+	line-height: 1.5em;
 }
-*/
+
+footer {
+	p {
+		margin: 0;
+	}
+}
