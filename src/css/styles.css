@@ -1,125 +1,93 @@
-/*
-$primary : #285278;
-$secondary : #E7E3BD;
-
-$main-width : 610px;
-$aside-width : 190px;
-
 html {
-	margin: 0;
-	font-family: 'Arial', sans-serif;
-}
+  margin: 0;
+  font-family: 'Arial', sans-serif; }
 
 body {
-	margin: 0;
-	background-color: $primary;
-}
+  margin: 0;
+  background-color: #285278; }
 
 .container {
-	width: 920px;
-	margin: 0 auto;
-	position: relative;
-}
+  width: 920px;
+  margin: 0 auto;
+  position: relative; }
 
 header {
-	position: relative;
-}
+  position: relative; }
 
 div.title {
-	background-color: #1E1E1E;
-	position: absolute;
-	right: 0;
-	bottom: 50px;
-	padding: 0px 60px 0px 60px;
-
-	h1 {
-		color: #556C8C;
-	}
-}
+  background-color: #1E1E1E;
+  position: absolute;
+  right: 0;
+  bottom: 50px;
+  padding: 0px 60px 0px 60px; }
+  div.title h1 {
+    color: #556C8C; }
 
 div.subtitle {
-	background-color: $primary;
-	color: #ffffff;
-	position: absolute;
-	right: 10px;
-	bottom: 40px;
-	padding: 5px;
-}
+  background-color: #285278;
+  color: #ffffff;
+  position: absolute;
+  right: 10px;
+  bottom: 40px;
+  padding: 5px; }
 
-nav {
-	ul {
-		list-style: none;
-		padding: 0;
-		margin-top: 0;
-		margin-bottom: 0;
-		margin-left: -10px;
-		margin-right: -10px;
-	}
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: -10px;
+  margin-right: -10px; }
 
-	li {
-		float: left;
-		margin: 10px;
-	}
+nav li {
+  float: left;
+  margin: 10px; }
 
-	a {
-		color: $secondary;
-		text-decoration: none;
-		font-weight: bold;
-	}
-}
+nav a {
+  color: #E7E3BD;
+  text-decoration: none;
+  font-weight: bold; }
 
 .bar {
-	background-color: #7C7B81;
-	float: left;
-	width: 100%;
-}
+  background-color: #7C7B81;
+  float: left;
+  width: 100%; }
 
 .bar-left {
-	width: $main-width;
-	float: left;
-	padding-left: 50px;
-}
+  width: 610px;
+  float: left;
+  padding-left: 50px; }
 
 .bar-aside {
-	background-color: $primary;
-	width: $aside-width;
-	float: left;
-	color: $secondary;
-	padding: 10px;
-	font-weight: bold;
-}
+  background-color: #285278;
+  width: 190px;
+  float: left;
+  color: #E7E3BD;
+  padding: 10px;
+  font-weight: bold; }
 
 aside {
-	width: $aside-width;
-	float: left;
-	background-color: $secondary;
-	background-image: url("images/angebote_hg.jpg");
-	padding: 10px;
-}
+  width: 190px;
+  float: left;
+  background-color: #E7E3BD;
+  background-image: url("images/angebote_hg.jpg");
+  padding: 10px; }
 
 main {
-	background-color: #ffffff;
-	float: left;
-	width: 100%;
+  background-color: #ffffff;
+  float: left;
+  width: 100%; }
+  main strong {
+    color: #285278;
+    font-weight: bold; }
 
-	strong {
-		color: $primary;
-		font-weight: bold;
-	}
-}
-
-article {
-	h2 {
-		margin-top: 0;
-		margin-bottom: 0;
-		font-size: 16px;
-	}
-}
+article h2 {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 16px; }
 
 .content {
-	float: left;
-	width: $main-width;
-	padding-left: 50px;
-	padding-top: 50px;
-}
-*/
+  float: left;
+  width: 610px;
+  padding-left: 50px;
+  padding-top: 50px; }
