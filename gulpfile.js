@@ -16,7 +16,7 @@ gulp.task('css', function() {
 	gulp.src([
 		'src/css/**/*.css',
 		])
-	.pipe(minifyCSS())
+//	.pipe(minifyCSS())
 	.pipe(concat('styles.css'))
 	.pipe(gulp.dest('public/css'));
 });

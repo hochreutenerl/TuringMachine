@@ -19,9 +19,10 @@ div.title {
   position: absolute;
   right: 0;
   bottom: 50px;
-  padding: 0px 60px 0px 60px; }
+  padding: 0px 50px 0px 50px; }
   div.title h1 {
-    color: #556C8C; }
+    color: #556C8C;
+    font-size: 36px; }
 
 div.subtitle {
   background-color: #285278;
@@ -51,27 +52,48 @@ nav a {
 .bar {
   background-color: #7C7B81;
   float: left;
-  width: 100%; }
+  width: 100%;
+  margin-top: -5px; }
 
 .bar-left {
-  width: 610px;
+  width: 560px;
   float: left;
   padding-left: 50px; }
 
 .bar-aside {
   background-color: #285278;
-  width: 190px;
+  width: 240px;
   float: left;
   color: #E7E3BD;
   padding: 10px;
   font-weight: bold; }
 
 aside {
-  width: 190px;
+  width: 240px;
   float: left;
   background-color: #E7E3BD;
-  background-image: url("images/angebote_hg.jpg");
-  padding: 10px; }
+  background-image: url(../images/angebote_hg.jpg);
+  padding: 10px;
+  background-position: bottom right;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  min-height: 350px;
+  position: relative; }
+  aside .top {
+    padding-bottom: 75px; }
+  aside strong {
+    color: #000000; }
+  aside .bottom {
+    float: right;
+    color: #E7E3BD;
+    font-size: 12px;
+    font-weight: bold;
+    text-align: right;
+    position: absolute;
+    bottom: 5px;
+    right: 5px; }
+    aside .bottom p {
+      margin: 0; }
 
 main {
   background-color: #ffffff;
@@ -88,6 +110,9 @@ article h2 {
 
 .content {
   float: left;
-  width: 610px;
-  padding-left: 50px;
-  padding-top: 50px; }
+  width: 510px;
+  padding: 50px;
+  line-height: 1.5em; }
+
+footer p {
+  margin: 0; }
