@@ -7,12 +7,14 @@ class TuringMachine
     private $state;
     private $debugMode;
 
+    private $steps = 0;
+
     /**
      * Konstruktor um eine neue Turingmaschine ins Leben zu rufen
-     * @param $tapes Bänder der Turingmaschine
-     * @param $states Zuständer der TM
-     * @param $initialSate Anfangszustand der TM
-     * @param $debugMode Debugingmodus aktiv oder nicht (default:false)
+     * @param $tapes array Bänder der Turingmaschine
+     * @param $states array Zuständer der TM
+     * @param $initialSate  State Anfangszustand der TM
+     * @param $debugMode    boolean Debugingmodus aktiv oder nicht (default:false)
      */
     public function __construct($tapes, $states, $initialState, $debugMode = 0)
     {

@@ -14,4 +14,8 @@ class Transition
         $this->movement = $movement;
         $this->targetState = $targetState;
     }
+
+    public function getTargetState() {
+        return $this->targetState;
+    }
 }
