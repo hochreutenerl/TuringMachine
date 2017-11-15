@@ -38,7 +38,9 @@ class Tape
     }
 
     public function writeSymbol($symbol) {
-        $this->content[$this->position] = $symbol;
+        if($symbol != "X" and $symbol != "?") {
+            $this->content[$this->position] = $symbol;
+        }
     }
 
     public function printStatus() {
