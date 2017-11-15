@@ -33,6 +33,17 @@ class Tape
 
     }
 
+    public function cleanUp() {
+        while ($this->position > 0 and substr($this->content,0,1) == self::EMPTY_CHAR) {
+            $this->content = substr($this->content, 1);
+            $this->position = $this->position--;
+        }
+
+        while ($this->position + 1 < strlen($this->content) and substr($this->content,-1,1) == self::EMPTY_CHAR) {
+            $this->content = substr($this->content,0, -1);
+        }
+    }
+
     public function readSymbol() {
         return substr($this->content,$this->position,1);
     }
@@ -43,9 +54,14 @@ class Tape
         }
     }
 
-    public function printStatus() {
-        $status =  "Position:   ".str_repeat(" ", $this->position)."V\n";
-        $status .= "Bandinhalt: ".$this->content."\n";
+    public function printStatus($maxDistanceFromPointer = 15) {
+        $marginRight = $maxDistanceFromPointer + $this->position - strlen($this->content) + 1;
+        $marginLeft = $maxDistanceFromPointer - $this->position;
+
+        $status =  "Position: ".str_repeat(" ", $this->position + $marginLeft)."V\n";
+        $status .= "Inhalt:   ".str_repeat(self::EMPTY_CHAR, $marginLeft).
+            $this->content.
+            str_repeat(self::EMPTY_CHAR, $marginRight)."\n";
         return $status;
     }
 
@@ -56,4 +72,5 @@ class Tape
     public function getContent() {
         return $this->content;
     }
+
 }

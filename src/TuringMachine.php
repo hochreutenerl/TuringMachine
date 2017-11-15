@@ -49,6 +49,7 @@ class TuringMachine
         foreach ($this->tapes as $i => $tape ){
             $tape->writeSymbol($nextTransition->getWriteSymbols()[$i]);
             $tape->move($nextTransition->getMovements()[$i]);
+            $tape->cleanUp();
         }
         $this->state = $nextTransition->getTargetState();
 
@@ -57,7 +58,7 @@ class TuringMachine
         }
     }
 
-    public function readSymbols() {
+    private function readSymbols() {
         $symbols = array();
         foreach ($this->tapes as $tape) {
             $symbols[] = $tape->readSymbol();
