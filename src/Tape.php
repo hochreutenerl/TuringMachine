@@ -5,6 +5,7 @@
  */
 class Tape
 {
+    const EMPTY_CHAR = "-";
     private $content;
     private $position;
 
@@ -22,12 +23,12 @@ class Tape
         }
 
         if($this->position < strlen($this->content) - 1) {
-            $this->content .= " ";
+            $this->content .= self::EMPTY_CHAR;
         }
 
         if($this->position < 0) {
             $this->position++;
-            $this->content = " ".$this->content;
+            $this->content = self::EMPTY_CHAR.$this->content;
         }
 
     }
