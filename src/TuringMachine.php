@@ -1,5 +1,17 @@
 <?php
 
+
+/**
+ * Turingmaschine zur Berechnung der Multiplikation
+ * zweier ganzer positiven Zahlen.
+ * Ausgabe: Korrektes Ergebnis
+ * Aktueller Zustand
+ * Band mit 15 Zellen vor und nach dem Lese- und Schreibkopf
+ * Aktuelle Lese/Schreibkopf Position
+ * Zähler der Berechnungsschritte
+ * @author Luca H. Jonas R.
+ * @version 0.1
+ */
 class TuringMachine
 {
     private $tapes = array();
