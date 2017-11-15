@@ -11,9 +11,9 @@ class TuringMachine
 
     /**
      * Konstruktor um eine neue Turingmaschine ins Leben zu rufen
-     * @param $tapes array Bänder der Turingmaschine
+     * @param $tapes array  Bänder der Turingmaschine
      * @param $states array Zuständer der TM
-     * @param $initialSate  State Anfangszustand der TM
+     * @param $initialState  State   Anfangszustand der TM
      * @param $debugMode    boolean Debugingmodus aktiv oder nicht (default:false)
      */
     public function __construct($tapes, $states, $initialState, $debugMode = 0)
@@ -32,20 +32,24 @@ class TuringMachine
     }
 
     public function runStep() {
-        /**
-         * @todo Implement Run Step
-         */
         $this->steps++;
+
+        $tape = $this->tapes[0];
+        $currentSymbol = $tape->readSymbol();
+        $nextTransition = $this->state->getTransitionForSymbol($currentSymbol);
+        $tape->writeSymbol($nextTransition->getWriteSymbol());
+        $tape->move($nextTransition->getMovement());
+        $this->state = $nextTransition->getTargetState();
 
         if($this->debugMode) {
             echo $this->printStatus();
         }
     }
 
+    /**
+     * @return bool returns true if machine is in an accepted state
+     */
     public function isInAcceptedState() {
-        /**
-         * @todo returns true if machine is in an accepted state
-         */
         return $this->state->isAccepting();
     }
 

@@ -17,11 +17,11 @@ $states = [
     $q_0, $q_1
 ];
 
-$intialState = $q_0;
+$initialState = $q_0;
 
 $tapes = [
   new Tape("101")
 ];
 
-$tm = new TuringMachine($tapes, $states, $intialState, 1);
+$tm = new TuringMachine($tapes, $states, $initialState, 1);
 $tm->run();

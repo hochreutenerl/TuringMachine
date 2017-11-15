@@ -15,6 +15,15 @@ class State
         $this->transitions[] = $transition;
     }
 
+    public function getTransitionForSymbol($symbol) {
+        foreach ($this->transitions as $transition) {
+            if($transition->getReadSymbol() == $symbol) {
+                return $transition;
+            }
+        }
+        die("No Transition found");
+    }
+
     public function isAccepting() {
         return $this->is_accepting;
     }
