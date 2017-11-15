@@ -1,5 +1,7 @@
 <?php
 
+namespace Turing;
+
 /**
  * Klasse für den Zustand einer Turingmaschine
  */

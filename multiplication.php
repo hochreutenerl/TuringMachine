@@ -1,9 +1,11 @@
 <?php
 
-require 'src/TuringMachine.php';
-require 'src/State.php';
-require 'src/Transition.php';
-require 'src/Tape.php';
+$loader = require 'vendor/autoload.php';
+
+use Turing\Tape;
+use Turing\State;
+use Turing\Transition;
+use Turing\TuringMachine;
 
 $q_0 = new State("Startzustand: bewege Band 0 nach rechts");
 $q_0b = new State("Startzustand: bewege Band 1 nach rechts");
@@ -67,8 +69,6 @@ $q_2carry->addTransition(new Transition(["?","-","1"],["?","?","0"],["L","N","L"
  */
 $q_2->addTransition(new Transition(["-","?","-"],["?","?","?"],["L","R","R"], $q_0));
 $q_2carry->addTransition(new Transition(["-","?","-"],["?","?","1"],["L","R","R"], $q_0));
-
-
 
 $initialState = $q_0;
 

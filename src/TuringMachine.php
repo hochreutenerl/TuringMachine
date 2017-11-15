@@ -1,5 +1,6 @@
 <?php
 
+namespace Turing;
 
 /**
  * Turingmaschine zur Berechnung der Multiplikation

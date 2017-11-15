@@ -1,5 +1,7 @@
 <?php
 
+namespace Turing;
+
 class Transition
 {
     private $readSymbols;

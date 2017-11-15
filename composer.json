@@ -8,5 +8,8 @@
       "name": "Luca Hochreutener, Jonas Rüegger",
       "email": "hochrluc@students.zhaw.ch"
     }
-  ]
+  ],
+  "autoload": {
+    "psr-4": {"Turing\\": "src/"}
+  }
 }

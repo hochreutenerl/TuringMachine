@@ -1,5 +1,7 @@
 <?php
 
+namespace Turing;
+
 /**
  * Klasse für das Band einer Turingmaschine
  */
