@@ -1,0 +1,12 @@
+{
+  "name": "hochrluc/turing",
+  "description": "implementation of turing machine",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Luca Hochreutener, Jonas Rüegger",
+      "email": "hochrluc@students.zhaw.ch"
+    }
+  ]
+}
