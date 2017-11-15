@@ -21,13 +21,17 @@ class TuringMachine
 
     private $steps = 0;
 
+    const EMPTY_SYMBOL = "-";
+    const NOT_EMPTY_SYMBOL_WILDCARD = "X";
+    const ANY_SYMBOL_WILDCARD = "?";
+
     /**
      * Konstruktor um eine neue Turingmaschine ins Leben zu rufen
      * @param $tapes array  Bänder der Turingmaschine
      * @param $initialState  State   Anfangszustand der TM
-     * @param $debugMode    boolean Debugingmodus aktiv oder nicht (default:false)
+     * @param $debugMode    bool Debugingmodus aktiv oder nicht (default:false)
      */
-    public function __construct($tapes, $initialState, $debugMode = 0)
+    public function __construct($tapes, $initialState, $debugMode = false)
     {
         $this->tapes = $tapes;
         $this->state = $initialState;
@@ -75,8 +79,7 @@ class TuringMachine
     }
 
     public function printStatus() {
-        $status = "";
-        $status .= "Aktueller Status: ".$this->state->getName()."\n";
+        $status = "Aktueller Status: ".$this->state->getName()."\n";
         foreach ($this->tapes as $i => $tape) {
             $status .= "Band $i: \n";
             $status .= $tape->printStatus();

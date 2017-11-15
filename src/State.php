@@ -9,12 +9,12 @@ class State
 {
     private $name;
     private $transitions = array();
-    private $is_accepting = false;
+    private $isAccepting = false;
 
-    public function __construct($name, $is_accepting = false)
+    public function __construct($name, $isAccepting = false)
     {
         $this->name = $name;
-        $this->is_accepting = $is_accepting;
+        $this->isAccepting = $isAccepting;
     }
 
     public function addTransition($transition) {
@@ -36,10 +36,10 @@ class State
             return false;
         }
         foreach ($symbols1 as $i => $symbol) {
-            if($symbol == "?") {
+            if($symbol == TuringMachine::ANY_SYMBOL_WILDCARD) {
 
-            } elseif ($symbol == "X") {
-                if($symbols2[$i] == "-") {
+            } elseif ($symbol == TuringMachine::NOT_EMPTY_SYMBOL_WILDCARD) {
+                if($symbols2[$i] == TuringMachine::EMPTY_SYMBOL) {
                     return false;
                 }
             } elseif($symbol != $symbols2[$i]) {
@@ -50,7 +50,7 @@ class State
     }
 
     public function isAccepting() {
-        return $this->is_accepting;
+        return $this->isAccepting;
     }
 
     public function getName() {

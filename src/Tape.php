@@ -7,7 +7,6 @@ namespace Turing;
  */
 class Tape
 {
-    const EMPTY_CHAR = "-";
     private $content;
     private $position;
 
@@ -25,23 +24,24 @@ class Tape
         }
 
         if($this->position > strlen($this->content) - 1) {
-            $this->content .= self::EMPTY_CHAR;
+            $this->content .= TuringMachine::EMPTY_SYMBOL;
         }
 
         if($this->position < 0) {
             $this->position++;
-            $this->content = self::EMPTY_CHAR.$this->content;
+            $this->content = TuringMachine::EMPTY_SYMBOL .$this->content;
         }
 
     }
 
     public function cleanUp() {
-        while ($this->position > 0 and substr($this->content,0,1) == self::EMPTY_CHAR) {
+        while ($this->position > 0 and substr($this->content,0,1) == TuringMachine::EMPTY_SYMBOL) {
             $this->content = substr($this->content, 1);
             $this->position = $this->position--;
         }
 
-        while ($this->position + 1 < strlen($this->content) and substr($this->content,-1,1) == self::EMPTY_CHAR) {
+        while ($this->position + 1 < strlen($this->content) and
+            substr($this->content,-1,1) == TuringMachine::EMPTY_SYMBOL) {
             $this->content = substr($this->content,0, -1);
         }
     }
@@ -51,7 +51,7 @@ class Tape
     }
 
     public function writeSymbol($symbol) {
-        if($symbol != "X" and $symbol != "?") {
+        if($symbol != TuringMachine::NOT_EMPTY_SYMBOL_WILDCARD and $symbol != TuringMachine::ANY_SYMBOL_WILDCARD) {
             $this->content[$this->position] = $symbol;
         }
     }
@@ -61,9 +61,9 @@ class Tape
         $marginLeft = $maxDistanceFromPointer - $this->position;
 
         $status =  "Position: ".str_repeat(" ", $this->position + $marginLeft)."V\n";
-        $status .= "Inhalt:   ".str_repeat(self::EMPTY_CHAR, $marginLeft).
+        $status .= "Inhalt:   ".str_repeat(TuringMachine::EMPTY_SYMBOL, $marginLeft).
             $this->content.
-            str_repeat(self::EMPTY_CHAR, $marginRight)."\n";
+            str_repeat(TuringMachine::EMPTY_SYMBOL, $marginRight)."\n";
         return $status;
     }
 
