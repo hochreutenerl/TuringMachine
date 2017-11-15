@@ -15,7 +15,6 @@
 class TuringMachine
 {
     private $tapes = array();
-    private $states = array();
     private $state;
     private $debugMode;
 
@@ -24,14 +23,12 @@ class TuringMachine
     /**
      * Konstruktor um eine neue Turingmaschine ins Leben zu rufen
      * @param $tapes array  Bänder der Turingmaschine
-     * @param $states array Zuständer der TM
      * @param $initialState  State   Anfangszustand der TM
      * @param $debugMode    boolean Debugingmodus aktiv oder nicht (default:false)
      */
-    public function __construct($tapes, $states, $initialState, $debugMode = 0)
+    public function __construct($tapes, $initialState, $debugMode = 0)
     {
         $this->tapes = $tapes;
-        $this->states = $states;
         $this->state = $initialState;
         $this->debugMode = $debugMode;
     }
