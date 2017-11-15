@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Klasse für den Zustand einer Turingmaschine
+ */
 class State
 {
     private $name;
