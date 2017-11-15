@@ -6,12 +6,12 @@ require 'src/Transition.php';
 require 'src/Tape.php';
 
 
-$q_0 = new State([]);
-$q_1 = new State([], true);
+$q_0 = new State("Q0");
+$q_1 = new State("Q1", true);
 
 $q_0->addTransition(new Transition("1","0","R", $q_0));
 $q_0->addTransition(new Transition("0","1","R", $q_0));
-$q_0->addTransition(new Transition("","","N", $q_1));
+$q_0->addTransition(new Transition(" "," ","N", $q_1));
 
 $states = [
     $q_0, $q_1
