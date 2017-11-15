@@ -36,4 +36,12 @@ class Tape
     public function writeSymbol($symbol) {
         $this->content[$this->position] = $symbol;
     }
+
+    public function getPosition() {
+        return $this->position;
+    }
+
+    public function getContent() {
+        return $this->content;
+    }
 }

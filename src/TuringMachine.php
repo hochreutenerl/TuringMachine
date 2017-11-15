@@ -28,6 +28,7 @@ class TuringMachine
         while(!$this->isInAcceptedState()) {
             $this->runStep();
         }
+        echo "Die Turing-Maschine ist in einem akzeptierten Zustand angekommen:\n";
         echo $this->printStatus();
     }
 
@@ -58,7 +59,15 @@ class TuringMachine
          * @todo Implement Print Status / Configuration
          */
 
-        $status = "Benötigte Schritte: $this->steps\n";
+        $status = "";
+        $status .= "Aktueller Status: ".$this->state->getName()."\n";
+        foreach ($this->tapes as $i => $tape) {
+            $status .= "Bandinhalt Band Nr. $i:   ".$tape->getContent()."\n";
+            $status .= "Position auf Band Nr. $i: ".str_repeat(" ", $tape->getPosition())."|\n";
+        }
+        $status .= "Benötigte Schritte: $this->steps\n";
+        $status .= "\n";
+
         return $status;
     }
 

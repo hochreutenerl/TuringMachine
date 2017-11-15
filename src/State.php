@@ -2,12 +2,13 @@
 
 class State
 {
+    private $name;
     private $transitions = array();
     private $is_accepting = false;
 
-    public function __construct($transitions = array(), $is_accepting = false)
+    public function __construct($name, $is_accepting = false)
     {
-        $this->transitions = $transitions;
+        $this->name = $name;
         $this->is_accepting = $is_accepting;
     }
 
@@ -26,5 +27,9 @@ class State
 
     public function isAccepting() {
         return $this->is_accepting;
+    }
+
+    public function getName() {
+        return $this->name;
     }
 }
