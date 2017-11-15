@@ -37,7 +37,6 @@ $q_0b->addTransition(new Transition([$s,$e,$s],[$s,$ne,$s],["N","N","N"], $q_0c)
 $q_0c->addTransition(new Transition([$s,$s,$ne],[$s,$s,$ne],["N","N","R"], $q_0c));
 $q_0c->addTransition(new Transition([$s,$s,$e],[$s,$s,$ne],["N","N","N"], $q_1));
 
-
 $q_1->addTransition(new Transition([$e,$e,$e],[$s,"0",$s],["L","L","N"], $q_1a));
 
 /*
