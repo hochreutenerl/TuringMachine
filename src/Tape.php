@@ -22,7 +22,7 @@ class Tape
             $this->position--;
         }
 
-        if($this->position < strlen($this->content) - 1) {
+        if($this->position > strlen($this->content) - 1) {
             $this->content .= self::EMPTY_CHAR;
         }
 
