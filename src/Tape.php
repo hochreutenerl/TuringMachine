@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Klasse für das Band einer Turingmaschine
+ */
 class Tape
 {
     private $content;
