@@ -47,16 +47,25 @@ class TuringMachine
     public function runStep() {
         $this->steps++;
 
-        $tape = $this->tapes[0];
-        $currentSymbol = $tape->readSymbol();
-        $nextTransition = $this->state->getTransitionForSymbol($currentSymbol);
-        $tape->writeSymbol($nextTransition->getWriteSymbol());
-        $tape->move($nextTransition->getMovement());
+        $currentSymbols = $this->readSymbols();
+        $nextTransition = $this->state->getTransitionForSymbols($currentSymbols);
+        foreach ($this->tapes as $i => $tape ){
+            $tape->writeSymbol($nextTransition->getWriteSymbols()[$i]);
+            $tape->move($nextTransition->getMovements()[$i]);
+        }
         $this->state = $nextTransition->getTargetState();
 
         if($this->debugMode) {
             echo $this->printStatus();
         }
+    }
+
+    public function readSymbols() {
+        $symbols = array();
+        foreach ($this->tapes as $tape) {
+            $symbols[] = $tape->readSymbol();
+        }
+        return $symbols;
     }
 
     /**
@@ -70,8 +79,8 @@ class TuringMachine
         $status = "";
         $status .= "Aktueller Status: ".$this->state->getName()."\n";
         foreach ($this->tapes as $i => $tape) {
-            $status .= "Position auf Band Nr. $i: ".str_repeat(" ", $tape->getPosition())."V\n";
-            $status .= "Bandinhalt Band Nr. $i:   ".$tape->getContent()."\n";
+            $status .= "Band $i: \n";
+            $status .= $tape->printStatus();
         }
         $status .= "Benötigte Schritte: $this->steps\n";
         $status .= "\n";

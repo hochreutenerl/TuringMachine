@@ -19,13 +19,14 @@ class State
         $this->transitions[] = $transition;
     }
 
-    public function getTransitionForSymbol($symbol) {
+    public function getTransitionForSymbols($symbols) {
         foreach ($this->transitions as $transition) {
-            if($transition->getReadSymbol() == $symbol) {
+            $transitionSymbols = $transition->getReadSymbols();
+            if(implode($transitionSymbols) == implode($symbols)) {
                 return $transition;
             }
         }
-        die("No Transition found");
+        die("Die Turing-Maschine hat keinen Übergang gefunden und ist im Abfallzustand gelandet.");
     }
 
     public function isAccepting() {

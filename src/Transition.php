@@ -2,29 +2,29 @@
 
 class Transition
 {
-    private $readSymbol;
-    private $writeTape;
-    private $movement = "N";
+    private $readSymbols;
+    private $writeSymbols;
+    private $movements;
     private $targetState;
 
-    public function __construct($readSymbol, $writeSymbol, $movement = "N", $targetState = null)
+    public function __construct($readSymbols, $writeSymbols, $movements, $targetState = null)
     {
-        $this->readSymbol = $readSymbol;
-        $this->writeTape = $writeSymbol;
-        $this->movement = $movement;
+        $this->readSymbols = $readSymbols;
+        $this->writeSymbols = $writeSymbols;
+        $this->movements = $movements;
         $this->targetState = $targetState;
     }
 
-    public function getReadSymbol() {
-        return $this->readSymbol;
+    public function getReadSymbols() {
+        return $this->readSymbols;
     }
 
-    public function getWriteSymbol() {
-        return $this->writeTape;
+    public function getWriteSymbols() {
+        return $this->writeSymbols;
     }
 
-    public function getMovement() {
-        return $this->movement;
+    public function getMovements() {
+        return $this->movements;
     }
 
     public function getTargetState() {

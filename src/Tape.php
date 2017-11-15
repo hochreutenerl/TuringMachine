@@ -41,6 +41,12 @@ class Tape
         $this->content[$this->position] = $symbol;
     }
 
+    public function printStatus() {
+        $status =  "Position:   ".str_repeat(" ", $this->position)."V\n";
+        $status .= "Bandinhalt: ".$this->content."\n";
+        return $status;
+    }
+
     public function getPosition() {
         return $this->position;
     }
