@@ -6,4 +6,4 @@ use Turing\MultiplicationTuringMachine;
 
 $m = new MultiplicationTuringMachine();
 $m->activateDebugMode();
-$m->multiplicate("1011", "1010");
+$m->multiplicate(decbin(13), decbin(17));

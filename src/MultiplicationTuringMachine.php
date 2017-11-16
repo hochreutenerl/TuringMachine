@@ -9,6 +9,11 @@ use Turing\TuringMachine;
 
 class MultiplicationTuringMachine extends TuringMachine {
 
+	/**
+	 * Konstruiert eine Turing-Maschine mit 3 Bändern
+	 * Beim Ausführen der Maschine wird Band 0 mit Band 1
+	 * multipliziert und das Resultat auf Band 2 geschreiben.
+	 */
 	public function __construct() {
 		$q_0 = new State("Bewege Band 0 nach rechts");
 		$q_0b = new State("Bewege Band 1 nach rechts");
@@ -86,6 +91,11 @@ class MultiplicationTuringMachine extends TuringMachine {
 		parent::__construct($tapes, $initialState, 0);
 	}
 
+	/**
+	 * Diese Methode führt die Multiplikation von zwei zahlen aus
+	 * @param  string $number1 Der erste Summand als Binärzahl
+	 * @param  string $number2 Der zweite Summand als Binärzahl
+	 */
 	public function multiplicate(string $number1, string $number2)
 	{
 		if(!preg_match('~^[01]+$~', $number1) or !preg_match('~^[01]+$~', $number2)) {
