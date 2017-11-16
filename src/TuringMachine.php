@@ -94,4 +94,12 @@ class TuringMachine
         $this->tapes = $tapes;
     }
 
+    public function deactivateDegubMode() {
+        $this->debugMode = false;
+    }
+
+    public function activateDebugMode() {
+        $this->debugMode = true;
+    }
+
 }

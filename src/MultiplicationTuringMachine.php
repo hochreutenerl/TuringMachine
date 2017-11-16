@@ -7,8 +7,7 @@ use Turing\State;
 use Turing\Transition;
 use Turing\TuringMachine;
 
-class MultiplicationTuringMachine {
-	private $machine;	
+class MultiplicationTuringMachine extends TuringMachine {
 
 	public function __construct() {
 		$q_0 = new State("Bewege Band 0 nach rechts");
@@ -84,7 +83,7 @@ class MultiplicationTuringMachine {
 			new Tape($e)
 		];
 
-		$this->machine = new TuringMachine($tapes, $initialState, 1);
+		parent::__construct($tapes, $initialState, 0);
 	}
 
 	public function multiplicate(string $number1, string $number2)
@@ -97,7 +96,7 @@ class MultiplicationTuringMachine {
 			new Tape($number2),
 			new Tape(TuringMachine::EMPTY_SYMBOL)
 		];
-		$this->machine->setTapes($tapes);
-		$this->machine->run();
+		$this->setTapes($tapes);
+		$this->run();
 	}
 }
