@@ -108,7 +108,15 @@ class TuringMachine
     }
 
     /**
-     * Setzt die angegebenen Bänder in die Turing maschine ein
+     * Gibt die Bänder der Turingmaschine zurück
+     * @return array        Die Bänder der Turingmaschine
+     */
+    public function getTapes() {
+        return $this->tapes;
+    }
+
+    /**
+     * Setzt die angegebenen Bänder in die Turingmaschine ein
      * @param array $tapes Die zu setzenden Bänder
      */
     public function setTapes($tapes) {

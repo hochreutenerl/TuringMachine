@@ -32,6 +32,7 @@ class MultiplicationTuringMachine extends TuringMachine {
 		$e = TuringMachine::EMPTY_SYMBOL;
 		$ne = TuringMachine::NOT_EMPTY_SYMBOL_WILDCARD;
 		$s = TuringMachine::ANY_SYMBOL_WILDCARD;
+
 		/*
 		 * Hier verschieben wir alle Pointer ans Ende
 		 */
@@ -108,5 +109,18 @@ class MultiplicationTuringMachine extends TuringMachine {
 		];
 		$this->setTapes($tapes);
 		$this->run();
+	}
+
+	/**
+	 * Führt die Multiplikation aus und gibt das Resultat zurück
+	 */
+	public function run()
+	{
+		parent::run();
+		$tapes = $this->getTapes();
+		$resultTape = $tapes[2];
+		$result = str_replace("-","",$resultTape->getContent());
+		echo "Resultat der Multiplikation: ".bindec($result)."\n";
+		echo "\n";
 	}
 }
