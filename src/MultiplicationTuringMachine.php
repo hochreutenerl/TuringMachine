@@ -94,25 +94,24 @@ class MultiplicationTuringMachine extends TuringMachine {
 
 	/**
 	 * Diese Methode führt die Multiplikation von zwei zahlen aus
-	 * @param  string $number1 Der erste Summand als Binärzahl
-	 * @param  string $number2 Der zweite Summand als Binärzahl
+	 * @param  int $number1 Der erste Summand als Binärzahl
+	 * @param  int $number2 Der zweite Summand als Binärzahl
+	 * @return int          Das Resultat der Multiplikation
 	 */
-	public function multiplicate(string $number1, string $number2)
+	public function multiplicate(int $number1, int $number2)
 	{
-		if(!preg_match('~^[01]+$~', $number1) or !preg_match('~^[01]+$~', $number2)) {
-			die("Einer der Summanden ist keine Binärzahl");
-		}
 		$tapes = [
-			new Tape($number1),
-			new Tape($number2),
+			new Tape(decbin($number1)),
+			new Tape(decbin($number2)),
 			new Tape(TuringMachine::EMPTY_SYMBOL)
 		];
 		$this->setTapes($tapes);
 		$this->run();
+		return $this->getResult();
 	}
 
 	/**
-	 * Führt die Multiplikation aus und gibt das Resultat zurück
+	 * Führt die Multiplikation aus und gibt das Resultat aus
 	 */
 	public function run()
 	{
@@ -123,4 +122,17 @@ class MultiplicationTuringMachine extends TuringMachine {
 		echo "Resultat der Multiplikation: ".bindec($result)."\n";
 		echo "\n";
 	}
+
+	/**
+	 * Gibt das Resultat nach erfolgter Multiplikation zurück
+	 * @return int Das Resultat der Mulitplikation
+	 */
+	public function getResult()
+	{
+		$tapes = $this->getTapes();
+		$resultTape = $tapes[2];
+		$result = str_replace("-","",$resultTape->getContent());
+		return bindec($result);
+	}
+
 }
