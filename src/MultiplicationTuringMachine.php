@@ -66,14 +66,14 @@ class MultiplicationTuringMachine extends TuringMachine {
 		$q_2->addTransition(new Transition([$s,"1",$e],[$s,$s,"1"],["N","L","L"], $q_2));
 		$q_2->addTransition(new Transition([$s,$e,"1"],[$s,$s,"1"],["N","N","L"], $q_2));
 
-		$q_2carry->addTransition(new Transition([$s,"0","0"],[$s,$s,"1"],["L","L","L"], $q_2));
-		$q_2carry->addTransition(new Transition([$s,"0","1"],[$s,$s,"0"],["L","L","L"], $q_2carry));
-		$q_2carry->addTransition(new Transition([$s,"1","0"],[$s,$s,"0"],["L","L","L"], $q_2carry));
-		$q_2carry->addTransition(new Transition([$s,"1","1"],[$s,$s,"1"],["L","L","L"], $q_2carry));
-		$q_2carry->addTransition(new Transition([$s,"0",$e],[$s,$s,"1"],["L","L","L"], $q_2));
-		$q_2carry->addTransition(new Transition([$s,"1",$e],[$s,$s,"0"],["L","L","L"], $q_2carry));
-		$q_2carry->addTransition(new Transition([$s,$e,"0"],[$s,$s,"1"],["L","N","L"], $q_2));
-		$q_2carry->addTransition(new Transition([$s,$e,"1"],[$s,$s,"0"],["L","N","L"], $q_2carry));
+		$q_2carry->addTransition(new Transition([$s,"0","0"],[$s,$s,"1"],["N","L","L"], $q_2));
+		$q_2carry->addTransition(new Transition([$s,"0","1"],[$s,$s,"0"],["N","L","L"], $q_2carry));
+		$q_2carry->addTransition(new Transition([$s,"1","0"],[$s,$s,"0"],["N","L","L"], $q_2carry));
+		$q_2carry->addTransition(new Transition([$s,"1","1"],[$s,$s,"1"],["N","L","L"], $q_2carry));
+		$q_2carry->addTransition(new Transition([$s,"0",$e],[$s,$s,"1"],["N","L","L"], $q_2));
+		$q_2carry->addTransition(new Transition([$s,"1",$e],[$s,$s,"0"],["N","L","L"], $q_2carry));
+		$q_2carry->addTransition(new Transition([$s,$e,"0"],[$s,$s,"1"],["N","N","L"], $q_2));
+		$q_2carry->addTransition(new Transition([$s,$e,"1"],[$s,$s,"0"],["N","N","L"], $q_2carry));
 
 		/*
 		 * Abschluss der Addition / Zurück in den Anfangszustand
