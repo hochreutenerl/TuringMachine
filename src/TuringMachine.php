@@ -90,4 +90,8 @@ class TuringMachine
         return $status;
     }
 
+    public function setTapes($tapes) {
+        $this->tapes = $tapes;
+    }
+
 }
