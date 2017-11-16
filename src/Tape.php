@@ -10,13 +10,13 @@ class Tape
     private $content;
     private $position;
 
-    public function __construct($content, $position = 0)
+    public function __construct(string $content, int $position = 0)
     {
         $this->content = $content;
         $this->position = $position;
     }
 
-    public function move($movement) {
+    public function move(string $movement) {
         if($movement == "R") {
             $this->position++;
         } elseif($movement == "L") {
@@ -50,13 +50,13 @@ class Tape
         return substr($this->content,$this->position,1);
     }
 
-    public function writeSymbol($symbol) {
+    public function writeSymbol(string $symbol) {
         if($symbol != TuringMachine::NOT_EMPTY_SYMBOL_WILDCARD and $symbol != TuringMachine::ANY_SYMBOL_WILDCARD) {
             $this->content[$this->position] = $symbol;
         }
     }
 
-    public function printStatus($maxDistanceFromPointer = 15) {
+    public function printStatus(int $maxDistanceFromPointer = 15) {
         $marginRight = $maxDistanceFromPointer + $this->position - strlen($this->content) + 1;
         $marginLeft = $maxDistanceFromPointer - $this->position;
 

@@ -31,7 +31,7 @@ class TuringMachine
      * @param $initialState  State   Anfangszustand der TM
      * @param $debugMode    bool Debugingmodus aktiv oder nicht (default:false)
      */
-    public function __construct($tapes, $initialState, $debugMode = false)
+    public function __construct(array $tapes, State $initialState, bool $debugMode = false)
     {
         $this->tapes = $tapes;
         $this->state = $initialState;

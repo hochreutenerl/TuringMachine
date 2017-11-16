@@ -87,12 +87,15 @@ class MultiplicationTuringMachine {
 		$this->machine = new TuringMachine($tapes, $initialState, 1);
 	}
 
-	public function multiplicate($number1, $number2)
+	public function multiplicate(string $number1, string $number2)
 	{
+		if(!preg_match('~^[01]+$~', $number1) or !preg_match('~^[01]+$~', $number2)) {
+			die("Einer der Summanden ist keine Binärzahl");
+		}
 		$tapes = [
 			new Tape($number1),
 			new Tape($number2),
-			new Tape($e)
+			new Tape(TuringMachine::EMPTY_SYMBOL)
 		];
 		$this->machine->setTapes($tapes);
 		$this->machine->run();

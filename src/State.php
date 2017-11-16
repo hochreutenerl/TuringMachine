@@ -11,17 +11,17 @@ class State
     private $transitions = array();
     private $isAccepting = false;
 
-    public function __construct($name, $isAccepting = false)
+    public function __construct(string $name, bool $isAccepting = false)
     {
         $this->name = $name;
         $this->isAccepting = $isAccepting;
     }
 
-    public function addTransition($transition) {
+    public function addTransition(Transition $transition) {
         $this->transitions[] = $transition;
     }
 
-    public function getTransitionForSymbols($symbols) {
+    public function getTransitionForSymbols(array $symbols) {
         foreach ($this->transitions as $transition) {
             $transitionSymbols = $transition->getReadSymbols();
             if($this->compareSymbols($transitionSymbols, $symbols)) {
@@ -31,7 +31,7 @@ class State
         die("Die Turing-Maschine hat keinen Übergang gefunden und ist im Abfallzustand gelandet.");
     }
 
-    private function compareSymbols($symbols1, $symbols2) {
+    private function compareSymbols(array $symbols1, array $symbols2) {
         if(count($symbols1) != count($symbols2)) {
             return false;
         }

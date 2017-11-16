@@ -9,7 +9,7 @@ class Transition
     private $movements;
     private $targetState;
 
-    public function __construct($readSymbols, $writeSymbols, $movements, $targetState = null)
+    public function __construct(array $readSymbols, array $writeSymbols, array $movements, State $targetState = null)
     {
         $this->readSymbols = $readSymbols;
         $this->writeSymbols = $writeSymbols;
