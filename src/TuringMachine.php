@@ -77,7 +77,9 @@ class TuringMachine
     public function isInAcceptedState() {
         return $this->state->isAccepting();
     }
-
+    /**
+     * Status der Turingmaschine auf der Konsole ausgeben
+     */
     public function printStatus() {
         $status = "Aktueller Status: ".$this->state->getName()."\n";
         foreach ($this->tapes as $i => $tape) {
