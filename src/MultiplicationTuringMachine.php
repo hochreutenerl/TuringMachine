@@ -8,7 +8,6 @@ use Turing\Transition;
 use Turing\TuringMachine;
 
 class MultiplicationTuringMachine extends TuringMachine {
-
 	/**
 	 * Konstruiert eine Turing-Maschine mit 3 Bändern
 	 * Beim Ausführen der Maschine wird Band 0 mit Band 1
@@ -100,6 +99,9 @@ class MultiplicationTuringMachine extends TuringMachine {
 	 */
 	public function multiplicate(int $number1, int $number2)
 	{
+		if($number1 < 0 or $number2 < 0) {
+			die("Die Summanden müssen positiv sein");
+		}
 		$tapes = [
 			new Tape(decbin($number1)),
 			new Tape(decbin($number2)),
