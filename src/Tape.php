@@ -85,6 +85,9 @@ class Tape
         $marginRight = $maxDistanceFromPointer + $this->position - strlen($this->content) + 1;
         $marginLeft = $maxDistanceFromPointer - $this->position;
 
+        if($marginRight < 1) $marginRight = 1;
+        if($marginLeft < 1) $marginLeft = 1;
+
         $status =  "Position: ".str_repeat(" ", $this->position + $marginLeft)."V\n";
         $status .= "Inhalt:   ".str_repeat(TuringMachine::EMPTY_SYMBOL, $marginLeft).
             $this->content.
