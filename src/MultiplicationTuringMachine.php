@@ -95,9 +95,10 @@ class MultiplicationTuringMachine extends TuringMachine {
 	 * Diese Methode führt die Multiplikation von zwei zahlen aus
 	 * @param  int $number1 Der erste Summand als Binärzahl
 	 * @param  int $number2 Der zweite Summand als Binärzahl
+	 * @param  bool $autorun Ob die Turingmaschine direkt gestartet werden soll
 	 * @return int          Das Resultat der Multiplikation
 	 */
-	public function multiplicate(int $number1, int $number2)
+	public function multiplicate(int $number1, int $number2, bool $autorun = true)
 	{
 		if($number1 < 0 or $number2 < 0) {
 			die("Die Summanden müssen positiv sein");
@@ -108,7 +109,11 @@ class MultiplicationTuringMachine extends TuringMachine {
 			new Tape(TuringMachine::EMPTY_SYMBOL)
 		];
 		$this->setTapes($tapes);
-		$this->run();
+
+		if($autorun) {
+			$this->run();
+		}
+
 		return $this->getResult();
 	}
 
