@@ -23,6 +23,7 @@ class MultiplicationTest extends TestCase {
 
 	public function testMultiplicationByZero()
 	{
+		$this->setOutputCallback(function() {});
 		$m = new MultiplicationTuringMachine();
 		$result = $m->multiplicate(0, 54);
 		$this->assertEquals(0, $result);
