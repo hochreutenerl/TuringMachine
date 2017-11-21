@@ -71,7 +71,7 @@ class Tape
      * @param  string Das zu schreibende Symbol
      */
     public function writeSymbol(string $symbol) {
-        if($symbol != (TuringMachine::NOT_EMPTY_SYMBOL_WILDCARD or TuringMachine::ANY_SYMBOL_WILDCARD)) {
+        if($symbol != TuringMachine::NOT_EMPTY_SYMBOL_WILDCARD and $symbol != TuringMachine::ANY_SYMBOL_WILDCARD) {
             $this->content[$this->position] = $symbol;
         }
     }
