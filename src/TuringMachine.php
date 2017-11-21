@@ -38,6 +38,11 @@ class TuringMachine
         $this->debugMode = $debugMode;
     }
 
+    /**
+     * Startet die Turingmaschine
+     * Die Turingmaschine läuft, bis ein akzeptierter Zustand erreicht wird,
+     * kein Übergangszustand gefunden werden kann oder ein Fehler auftritt
+     */
     public function run() {
         while(!$this->isInAcceptedState()) {
             $this->runStep();
@@ -46,6 +51,9 @@ class TuringMachine
         echo $this->printStatus();
     }
 
+    /**
+     * Lässt die Turingmaschine einen Berechnungsschritt machen
+     */
     public function runStep() {
         $this->steps++;
 
@@ -63,6 +71,10 @@ class TuringMachine
         }
     }
 
+    /**
+     * Liest die Symbole von allen Bändern aus
+     * @return array Array der Symbole auf den Bändern
+     */
     private function readSymbols() {
         $symbols = array();
         foreach ($this->tapes as $tape) {
@@ -72,13 +84,16 @@ class TuringMachine
     }
 
     /**
-     * @return bool returns true if machine is in an accepted state
+     * Gibt zurück, ob die Maschine in einem akzeptierten Zustand ist
+     * @return boolean true, wenn die Maschine in einem akzeptierten Zustand ist, ansonsten false
      */
     public function isInAcceptedState() {
         return $this->state->isAccepting();
     }
+
     /**
-     * Status der Turingmaschine auf der Konsole ausgeben
+     * Gibt eine Meldung über den Status der Turingmaschine zurück.
+     * @return string Aktuelle Statusmeldung
      */
     public function printStatus() {
         $status = "Aktueller Status: ".$this->state->getName()."\n";
@@ -92,14 +107,32 @@ class TuringMachine
         return $status;
     }
 
+    /**
+     * Gibt die Bänder der Turingmaschine zurück
+     * @return array        Die Bänder der Turingmaschine
+     */
+    public function getTapes() {
+        return $this->tapes;
+    }
+
+    /**
+     * Setzt die angegebenen Bänder in die Turingmaschine ein
+     * @param array $tapes Die zu setzenden Bänder
+     */
     public function setTapes($tapes) {
         $this->tapes = $tapes;
     }
 
+    /**
+     * Deaktiviert den Debug / Schrittmodus
+     */
     public function deactivateDegubMode() {
         $this->debugMode = false;
     }
 
+    /**
+     * Aktiviert den Debug / Schrittmodus
+     */
     public function activateDebugMode() {
         $this->debugMode = true;
     }

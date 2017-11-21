@@ -13,6 +13,10 @@
     "php": ">=7.1.0"
   },
   "autoload": {
-    "psr-4": {"Turing\\": "src/"}
+    "psr-4": {"Turing\\": "src/"},
+    "psr-0": {"TestFiles\\": "tests/"}
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^6.4"
   }
 }

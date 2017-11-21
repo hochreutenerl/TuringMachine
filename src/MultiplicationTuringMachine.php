@@ -8,7 +8,11 @@ use Turing\Transition;
 use Turing\TuringMachine;
 
 class MultiplicationTuringMachine extends TuringMachine {
-
+	/**
+	 * Konstruiert eine Turing-Maschine mit 3 Bändern
+	 * Beim Ausführen der Maschine wird Band 0 mit Band 1
+	 * multipliziert und das Resultat auf Band 2 geschreiben.
+	 */
 	public function __construct() {
 		$q_0 = new State("Bewege Band 0 nach rechts");
 		$q_0b = new State("Bewege Band 1 nach rechts");
@@ -27,6 +31,7 @@ class MultiplicationTuringMachine extends TuringMachine {
 		$e = TuringMachine::EMPTY_SYMBOL;
 		$ne = TuringMachine::NOT_EMPTY_SYMBOL_WILDCARD;
 		$s = TuringMachine::ANY_SYMBOL_WILDCARD;
+
 		/*
 		 * Hier verschieben wir alle Pointer ans Ende
 		 */
@@ -60,14 +65,14 @@ class MultiplicationTuringMachine extends TuringMachine {
 		$q_2->addTransition(new Transition([$s,"1",$e],[$s,$s,"1"],["N","L","L"], $q_2));
 		$q_2->addTransition(new Transition([$s,$e,"1"],[$s,$s,"1"],["N","N","L"], $q_2));
 
-		$q_2carry->addTransition(new Transition([$s,"0","0"],[$s,$s,"1"],["L","L","L"], $q_2));
-		$q_2carry->addTransition(new Transition([$s,"0","1"],[$s,$s,"0"],["L","L","L"], $q_2carry));
-		$q_2carry->addTransition(new Transition([$s,"1","0"],[$s,$s,"0"],["L","L","L"], $q_2carry));
-		$q_2carry->addTransition(new Transition([$s,"1","1"],[$s,$s,"1"],["L","L","L"], $q_2carry));
-		$q_2carry->addTransition(new Transition([$s,"0",$e],[$s,$s,"1"],["L","L","L"], $q_2));
-		$q_2carry->addTransition(new Transition([$s,"1",$e],[$s,$s,"0"],["L","L","L"], $q_2carry));
-		$q_2carry->addTransition(new Transition([$s,$e,"0"],[$s,$s,"1"],["L","N","L"], $q_2));
-		$q_2carry->addTransition(new Transition([$s,$e,"1"],[$s,$s,"0"],["L","N","L"], $q_2carry));
+		$q_2carry->addTransition(new Transition([$s,"0","0"],[$s,$s,"1"],["N","L","L"], $q_2));
+		$q_2carry->addTransition(new Transition([$s,"0","1"],[$s,$s,"0"],["N","L","L"], $q_2carry));
+		$q_2carry->addTransition(new Transition([$s,"1","0"],[$s,$s,"0"],["N","L","L"], $q_2carry));
+		$q_2carry->addTransition(new Transition([$s,"1","1"],[$s,$s,"1"],["N","L","L"], $q_2carry));
+		$q_2carry->addTransition(new Transition([$s,"0",$e],[$s,$s,"1"],["N","L","L"], $q_2));
+		$q_2carry->addTransition(new Transition([$s,"1",$e],[$s,$s,"0"],["N","L","L"], $q_2carry));
+		$q_2carry->addTransition(new Transition([$s,$e,"0"],[$s,$s,"1"],["N","N","L"], $q_2));
+		$q_2carry->addTransition(new Transition([$s,$e,"1"],[$s,$s,"0"],["N","N","L"], $q_2carry));
 
 		/*
 		 * Abschluss der Addition / Zurück in den Anfangszustand
@@ -86,17 +91,50 @@ class MultiplicationTuringMachine extends TuringMachine {
 		parent::__construct($tapes, $initialState, 0);
 	}
 
-	public function multiplicate(string $number1, string $number2)
+	/**
+	 * Diese Methode führt die Multiplikation von zwei zahlen aus
+	 * @param  int $number1 Der erste Summand als Binärzahl
+	 * @param  int $number2 Der zweite Summand als Binärzahl
+	 * @return int          Das Resultat der Multiplikation
+	 */
+	public function multiplicate(int $number1, int $number2)
 	{
-		if(!preg_match('~^[01]+$~', $number1) or !preg_match('~^[01]+$~', $number2)) {
-			die("Einer der Summanden ist keine Binärzahl");
+		if($number1 < 0 or $number2 < 0) {
+			die("Die Summanden müssen positiv sein");
 		}
 		$tapes = [
-			new Tape($number1),
-			new Tape($number2),
+			new Tape(decbin($number1)),
+			new Tape(decbin($number2)),
 			new Tape(TuringMachine::EMPTY_SYMBOL)
 		];
 		$this->setTapes($tapes);
 		$this->run();
+		return $this->getResult();
 	}
+
+	/**
+	 * Führt die Multiplikation aus und gibt das Resultat aus
+	 */
+	public function run()
+	{
+		parent::run();
+		$tapes = $this->getTapes();
+		$resultTape = $tapes[2];
+		$result = str_replace("-","",$resultTape->getContent());
+		echo "Resultat der Multiplikation: ".bindec($result)."\n";
+		echo "\n";
+	}
+
+	/**
+	 * Gibt das Resultat nach erfolgter Multiplikation zurück
+	 * @return int Das Resultat der Mulitplikation
+	 */
+	public function getResult()
+	{
+		$tapes = $this->getTapes();
+		$resultTape = $tapes[2];
+		$result = str_replace("-","",$resultTape->getContent());
+		return bindec($result);
+	}
+
 }
