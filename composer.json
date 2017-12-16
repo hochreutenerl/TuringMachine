@@ -1,5 +1,5 @@
 {
-  "name": "hochrluc/turing",
+  "name": "hochrluc/turing-machine",
   "description": "implementation of turing machine",
   "minimum-stability": "stable",
   "license": "proprietary",
