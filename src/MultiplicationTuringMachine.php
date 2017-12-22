@@ -2,11 +2,6 @@
 
 namespace Turing;
 
-use Turing\Tape;
-use Turing\State;
-use Turing\Transition;
-use Turing\TuringMachine;
-
 class MultiplicationTuringMachine extends TuringMachine {
 	/**
 	 * Konstruiert eine Turing-Maschine mit 3 Bändern
@@ -24,9 +19,7 @@ class MultiplicationTuringMachine extends TuringMachine {
 		$q_2 = new State("Addiere Input 1 zum Resultat, wir haben keinen Übertrag");
 		$q_2carry = new State("Addiere Input 1 zum Resultat, wir haben einen Übertrag");
 
-		$q_3 = new State("Addition beendet");
-
-		$q_4 = new State("Multiplikation beendet", true);
+        $q_3 = new State("Multiplikation beendet", true);
 
 		$e = TuringMachine::EMPTY_SYMBOL;
 		$ne = TuringMachine::NOT_EMPTY_SYMBOL_WILDCARD;
@@ -51,7 +44,7 @@ class MultiplicationTuringMachine extends TuringMachine {
 		 */
 		$q_1a->addTransition(new Transition(["0",$s,$s],[$e,$s,$s],["L","N","N"], $q_0));
 		$q_1a->addTransition(new Transition(["1",$s,$s],[$e,$s,$s],["N","N","L"], $q_2));
-		$q_1a->addTransition(new Transition([$e,$s,$s],[$e,$s,$s],["N","N","N"], $q_4));
+        $q_1a->addTransition(new Transition([$e, $s, $s], [$e, $s, $s], ["N", "N", "N"], $q_3));
 
 		/*
 		 * Berechnung der Addition
