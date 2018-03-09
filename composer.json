@@ -1,6 +1,6 @@
 {
   "name": "hochreutenerl/turing-machine",
-  "description": "implementation of turing machine",
+  "description": "Implementation of turing machine. It was part of a school project at zhaw.",
   "minimum-stability": "stable",
   "license": "MIT",
   "authors": [
